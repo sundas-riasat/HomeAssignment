@@ -1,0 +1,41 @@
+<div class="container mt-3">
+<!--  Search bar-->
+  <div class="row p-2 m-1 search-box">
+    <div class="col-9 col-md-10 col-lg-11">
+      <input class="form-control" [(ngModel)]="artistName" (change)="fetchArtist()" type="text" name="search" placeholder="Search Artist">
+    </div>
+    <div class="col-3 col-md-2 col-lg-1 d-flex justify-content-center align-items-center">
+      <img class="icon" src="../../assets/search.svg" alt="">
+    </div>
+  </div>
+<!--  If an artist was found -->
+  <div class="row my-3 px-1" *ngIf="artist">
+    <div class="col-12 my-3" *ngIf="displayName" ><strong>1 Result found for "{{displayName}}".</strong></div>
+    <div (click)="viewEvents(displayName)" class="col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngIf="displayName && artist">
+      <div class="card p-3 d-flex flex-row align-items-center">
+        <img class="artist-thumb rounded-circle m-auto" src="{{artist?.thumb_url}}" alt="">
+        <div class="mx-2 card-content" >
+          <strong class="card-title h5" >{{artist?.name}}</strong> <br />
+          <span class="card-text">{{artist?.facebook_page_url}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  In case if no artist is found -->
+  <div class="row" *ngIf="displayName && !artist">
+    <div class="col-12" >
+      <p class="text-danger">No artist with the name {{displayName}} found. Try another name.</p>
+    </div>
+  </div>
+<!--  To show spinner -->
+  <div class="row" *ngIf="isLoading">
+    <div class="col-12">
+      <ngx-spinner bdColor="rgba(51,51,51,0.8)"
+                   size="medium"
+                   color="#fff"
+                   type="ball-scale-multiple">
+      </ngx-spinner>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,21 @@
+// This file is to overwrite the necessary code in bootstrap.scss
+
+// To change body background color and text color, customizing scss variables.
+$body-bg: #fafafa;
+$body-color: #3c3c3c;
+
+// Changing the default appearance of input tag
+input.form-control{
+  border: none;
+  &:active , &:focus{
+    border: none;
+    box-shadow: none;
+  }
+}
+
+// Changing the default appearance of bootstrap cards
+div.card{
+  border: none;
+  border-radius: 0px;
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,27 @@
+// Importing necessary files
+@import 'customize-bootstrap.scss';
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+// Defining styles which are to remain same throughout the application
+
+//setting default icon size
+.icon {
+  height: 25px;
+}
+
+// searchbox background color and shadow
+.search-box {
+  background-color: #fff;
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.1);
+}
+
+//artist profile picture display size
+.artist-thumb {
+  height: 100px;
+  width: 100px;
+}
+
+// Content of the Artist cards
+.card-content{
+  min-width: 200px;
+}
