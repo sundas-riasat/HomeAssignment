@@ -24,17 +24,22 @@ export class HomeComponent implements OnInit {
 
   // Function to fetch the artist with specified name
   fetchArtist() {
-    this.isLoading = true;
-    this.spinner.show();
-    this.dataService.getArtistsByName(this.artistName)?.subscribe(data => {
-      this.artist = data;
-      if (this.artist.error || this.artist === '') {
-        this.artist = null;
-      }
-      this.displayName = this.artistName;
-      this.isLoading = false;
-      this.spinner.hide();
-    });
+    if (this.artistName) {
+      this.isLoading = true;
+      this.spinner.show();
+      this.dataService.getArtistsByName(this.artistName)?.subscribe(data => {
+        this.artist = data;
+        if (this.artist.error || this.artist === '') {
+          this.artist = null;
+        }
+        this.displayName = this.artistName;
+        this.isLoading = false;
+        this.spinner.hide();
+      });
+    } else {
+      this.artist = '';
+      this.artistName = this.displayName = null;
+    }
   }
 
   // Navigates to events

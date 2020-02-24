@@ -22,15 +22,19 @@ export class EventsComponent implements OnInit {
     this.name = this.route.snapshot.paramMap.get('name');
     this.fetchArtist();
   }
+
   // Fetches the artist and initiates the call for events on the callback from artists
   fetchArtist() {
-    this.isLoading = true;
-    this.spinner.show();
-    this.dataService.getArtistsByName(this.name)?.subscribe(data => {
-      this.artist = data;
-      this.fetchEvents();
-    });
+    if (this.name) {
+      this.isLoading = true;
+      this.spinner.show();
+      this.dataService.getArtistsByName(this.name)?.subscribe(data => {
+        this.artist = data;
+        this.fetchEvents();
+      });
+    }
   }
+
   // Featches events
   fetchEvents() {
     this.dataService.getEventsByArtistName(this.name)?.subscribe(events => {

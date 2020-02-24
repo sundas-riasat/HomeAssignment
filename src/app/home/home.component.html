@@ -10,6 +10,7 @@
   </div>
 <!--  If an artist was found -->
   <div class="row my-3 px-1" *ngIf="artist">
+<!--    Because there is always going to be one artist: API returns an object not an array-->
     <div class="col-12 my-3" *ngIf="displayName" ><strong>1 Result found for "{{displayName}}".</strong></div>
     <div (click)="viewEvents(displayName)" class="col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngIf="displayName && artist">
       <div class="card p-3 d-flex flex-row align-items-center">
